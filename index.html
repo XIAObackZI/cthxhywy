@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>梦幻星空 - 动态网站</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 移除有问题的预加载标签，改用更好的方式 -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" crossorigin>
+</head>
+<body>
+    <!-- 音乐自动播放提示 -->
+    <div id="music-notification" class="music-notification">
+        <div class="notification-content">
+            <i class="fas fa-music"></i>
+            <span>背景音乐已准备就绪</span>
+            <div class="notification-buttons">
+                <button id="start-music-btn" class="notification-btn primary-btn">
+                    <i class="fas fa-play"></i> 播放音乐
+                </button>
+                <button id="dismiss-notification-btn" class="notification-btn">
+                    <i class="fas fa-times"></i> 稍后再说
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 正在播放指示器容器会由JS动态创建 -->
+
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    
+    <!-- 音乐播放器 - 优化加载方式 -->
+    <div class="music-player">
+        <div class="music-info">
+            <img src="music/cover.jpg" alt="歌曲封面" class="album-cover">
+            <div class="song-details">
+                <p class="song-title">时差絮语</p>
+                <audio id="background-music" controls loop>
+                    <source data-src="music/music.mp3" type="audio/mp3">
+                    您的浏览器不支持 audio 元素。
+                </audio>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 悬浮音乐控制按钮 -->
+    <div class="floating-music-control">
+        <button id="toggle-music" class="music-control-btn pulse">
+            <i class="fas fa-play" id="play-icon"></i>
+            <i class="fas fa-pause" id="pause-icon" style="display:none"></i>
+        </button>
+    </div>
+    
+    <header class="fade-in">
+        <div class="container">
+            <h1 class="slide-in"><i class="fas fa-moon fa-sm"></i> 梦幻星空 <i class="fas fa-star fa-sm"></i></h1>
+            <p class="subtitle slide-in-delayed">探索无限的可能性</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="container content-section">
+            <h2 class="section-title">欢迎来到我的世界</h2>
+            <div class="card-container">
+                <div class="card fade-in-scroll">
+                    <div class="card-icon"><i class="fas fa-star"></i></div>
+                    <h3>梦想</h3>
+                    <p>每个梦想都是一颗等待被点亮的星星，照亮你前行的道路。</p>
+                </div>
+                <div class="card fade-in-scroll">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>探索</h3>
+                    <p>勇敢迈出舒适区，发现世界的奇妙与美丽。</p>
+                </div>
+                <div class="card fade-in-scroll">
+                    <div class="card-icon"><i class="fas fa-heart"></i></div>
+                    <h3>热爱</h3>
+                    <p>对生活充满热情，热爱每一个值得珍惜的瞬间。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container content-section">
+            <h2 class="section-title">我的作品</h2>
+            <div class="gallery">
+                <div class="gallery-item zoom-on-hover">
+                    <img src="ass/galaxy1.jpg" alt="星空特写" loading="lazy">
+                </div>
+                <div class="gallery-item zoom-on-hover big-gallery-item">
+                    <img src="ass/moon.jpg" alt="月球图片" loading="lazy">
+                </div>
+                <div class="gallery-item zoom-on-hover">
+                    <img src="ass/galaxy2.jpg" alt="星云图片" loading="lazy">
+                </div>
+                <div class="gallery-item zoom-on-hover">
+                    <img src="ass/galaxy3.jpg" alt="宇宙景观" loading="lazy">
+                </div>
+                <div class="gallery-item zoom-on-hover">
+                    <img src="ass/sky.jpg" alt="星空图片" loading="lazy">
+                </div>
+            </div>
+        </section>
+        
+        <section class="container content-section">
+            <h2 class="section-title">宇宙探索</h2>
+            <div class="video-container fade-in-scroll">
+                <!-- 视频使用延迟加载，修复视频加载问题 -->
+                <video controls poster="ass/galaxy2.jpg" class="featured-video" preload="none">
+                    <source data-src="ass/space.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+                <div class="video-caption">
+                    <h3>宇宙的奥秘</h3>
+                    <p>探索浩瀚无垠的宇宙，感受星空的壮丽与神秘。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container content-section contact-section">
+            <h2 class="section-title">联系我</h2>
+            <form class="contact-form fade-in-scroll">
+                <div class="form-group">
+                    <input type="text" placeholder="您的名字" class="input-field" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="您的邮箱" class="input-field" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="您的留言" class="input-field" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn pulse">发送留言</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 梦幻星空. 保留所有权利。</p>
+            <div class="social-links">
+                <a href="#" class="social-icon float-animation"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon float-animation"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon float-animation"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
